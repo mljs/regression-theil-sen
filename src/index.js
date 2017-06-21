@@ -75,7 +75,7 @@ function theilSen(regression, x, y) {
     let slopes = new Array(len * len);
     let count = 0;
     for (let i = 0; i < len; ++i) {
-        for (let j =  i + 1; j < len; ++j) {
+        for (let j = i + 1; j < len; ++j) {
             if (x[i] !== x[j]) {
                 slopes[count++] = (y[j] - y[i]) / (x[j] - x[i]);
             }
