@@ -1,6 +1,6 @@
 {
   "name": "ml-regression-theil-sen",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Theil-Sen regression",
   "main": "lib/index.js",
   "module": "src/index.js",
