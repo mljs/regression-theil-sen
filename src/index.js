@@ -1,10 +1,11 @@
-import BaseRegression, {
-  checkArrayLength,
-  maybeToPrecision
-} from 'ml-regression-base';
 import median from 'ml-array-median';
+import {
+  BaseRegression,
+  checkArrayLength,
+  maybeToPrecision,
+} from 'ml-regression-base';
 
-export default class TheilSenRegression extends BaseRegression {
+export class TheilSenRegression extends BaseRegression {
   /**
    * Theil–Sen estimator
    * https://en.wikipedia.org/wiki/Theil%E2%80%93Sen_estimator
@@ -30,7 +31,7 @@ export default class TheilSenRegression extends BaseRegression {
     return {
       name: 'TheilSenRegression',
       slope: this.slope,
-      intercept: this.intercept
+      intercept: this.intercept,
     };
   }
 
@@ -43,15 +44,14 @@ export default class TheilSenRegression extends BaseRegression {
   }
 
   toString(precision) {
-    var result = 'f(x) = ';
+    let result = 'f(x) = ';
     if (this.slope) {
-      var xFactor = maybeToPrecision(this.slope, precision);
+      let xFactor = maybeToPrecision(this.slope, precision);
       result += `${Math.abs(xFactor - 1) < 1e-5 ? '' : `${xFactor} * `}x`;
       if (this.intercept) {
-        var absIntercept = Math.abs(this.intercept);
-        var operator = absIntercept === this.intercept ? '+' : '-';
-        result +=
-          ` ${operator} ${maybeToPrecision(absIntercept, precision)}`;
+        let absIntercept = Math.abs(this.intercept);
+        let operator = absIntercept === this.intercept ? '+' : '-';
+        result += ` ${operator} ${maybeToPrecision(absIntercept, precision)}`;
       }
     } else {
       result += maybeToPrecision(this.intercept, precision);
